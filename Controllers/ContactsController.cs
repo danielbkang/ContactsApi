@@ -2,7 +2,6 @@ using ContactsApi.Models;
 using ContactsApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 namespace ContactsApi.Controllers
 {
     [Route("api/contacts")]

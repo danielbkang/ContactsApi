@@ -1,7 +1,6 @@
 using ContactsApi.Models;
 using Oracle.ManagedDataAccess.Client;
 using System.Data;
-using System;
 using System.Collections.Generic;
 
 namespace ContactsApi.Services
