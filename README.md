@@ -1,6 +1,7 @@
 # Contact API
 
-Current version only allows Create and Get operation. Update and Delete operation will be implemented soon.
+This API provides CRUD operation of contacts. Contacts schema is provided below at [Database Schema](## Database Schema) section.
+*Current version only allows Create and Get operation. Update and Delete operation will be implemented soon.
 
 The API is locally tested with Oracle Database 19c installed in Windows 10.
 
