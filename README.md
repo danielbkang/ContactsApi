@@ -1,6 +1,6 @@
 # Contact API
 
-This API provides CRUD operation of contacts. Contacts schema is provided below at [Database Schema](## Database Schema) section.
+This API provides CRUD operation of contacts. Contacts schema is provided below at [Database Schema](#database-schema) section.
 *Current version only allows Create and Get operation. Update and Delete operation will be implemented soon.
 
 The API is locally tested with Oracle Database 19c installed in Windows 10.
@@ -14,7 +14,7 @@ dotnet build
 dotnet run
 ```
 
-## Database Schema
+# Database Schema
 ```
 CREATE TABLE contact(
 id NUMBER NOT NULL Primary key,
@@ -27,9 +27,24 @@ phone VARCHAR2(15)
 );
 ```
 
-### Example data format
+## Example data format
 ```
 INSERT into contact values(10, 'daniel','kang',TO_DATE('1991/02/22','yyyy/mm/dd'),'qwerty@gmail.com','1234 qwer st Vancouver','7781118888');
+```
+
+# CRUD Operation
+
+## GET
+
+```
+localhost:5001/api/contacts
+localhost:5001/api/contacts/{id}
+```
+
+## POST
+
+```
+localhost:5001/api/contacts
 ```
 
 ### Valid example for POST body
