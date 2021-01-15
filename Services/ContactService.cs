@@ -119,5 +119,61 @@ namespace ContactsApi.Services
                 _connection.Close();
             }
         }
+
+        public Contact Update(Contact contact)
+        {
+            try
+            {
+                if (_connection.State == ConnectionState.Closed)
+                {
+                    _connection.Open();
+                }
+
+                string sql = "UPDATE " + _tableName
+                    + " SET "
+                    + "FIRSTNAME = " + "'" + contact.FirstName + "',"
+                    + "LASTNAME = " + "'" + contact.LastName + "',"
+                    + "BIRTH = " + "TO_DATE('" + contact.Birth.ToString("yyyy/MM/dd") + "','yyyy/mm/dd'),"
+                    + "EMAIL = " + "'" + contact.Email + "',"
+                    + "ADDRESS = " + "'" + contact.Address + "',"
+                    + "PHONE = " + "'" + contact.PhoneNumber + "',"
+                    + "WHERE ID = " +  contact.Id;
+                OracleCommand command = new OracleCommand(sql, _connection);
+                command.CommandType = CommandType.Text;
+
+                command.ExecuteNonQuery();
+
+                return contact;
+            }
+            finally
+            {
+                _connection.Close();
+            }
+        }
+
+        public Contact Delete(Contact contact)
+        {
+            try
+            {
+                if (_connection.State == ConnectionState.Closed)
+                {
+                    _connection.Open();
+                }
+
+                string sql = "DELETE FROM " + _tableName
+                    + " WHERE ID = " + contact.Id;
+                OracleCommand command = new OracleCommand(sql, _connection);
+                command.CommandType = CommandType.Text;
+
+                command.ExecuteNonQuery();
+
+                return contact;
+            }
+            finally
+            {
+                _connection.Close();
+            }
+        }
+
     }
 }
