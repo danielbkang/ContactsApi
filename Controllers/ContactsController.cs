@@ -42,5 +42,34 @@ namespace ContactsApi.Controllers
             return CreatedAtRoute("GetContact", new { id = contact.Id }, contact);
         }
 
+        [HttpPut("{id:length(24)}")]
+        public ActionResult Update(long id, Contact contact)
+        {
+            var localContact = _contactService.Get(contact.Id);
+
+            if (localContact == null)
+            {
+                return NotFound();
+            }
+
+            _contactService.Update(contact);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id:length(24)}")]
+        public ActionResult Delete(long id)
+        {
+            var contact = _contactService.Get(id);
+
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            _contactService.Delete(id);
+
+            return NoContent();
+        }
     }
 }

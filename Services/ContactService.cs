@@ -151,7 +151,7 @@ namespace ContactsApi.Services
             }
         }
 
-        public Contact Delete(Contact contact)
+        public void Delete(long id)
         {
             try
             {
@@ -161,13 +161,11 @@ namespace ContactsApi.Services
                 }
 
                 string sql = "DELETE FROM " + _tableName
-                    + " WHERE ID = " + contact.Id;
+                    + " WHERE ID = " + id;
                 OracleCommand command = new OracleCommand(sql, _connection);
                 command.CommandType = CommandType.Text;
 
                 command.ExecuteNonQuery();
-
-                return contact;
             }
             finally
             {
